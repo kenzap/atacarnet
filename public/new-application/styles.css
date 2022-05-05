@@ -1,0 +1,287 @@
+html {
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  line-height: 1.75;
+  font-weight: 400;
+  color: var(--txtColorA);
+}
+
+.kp {
+  margin: -16px auto 0 auto;
+}
+.kp h1, .kp h2, .kp h3, .kp h4, .kp h5 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 3rem 0 1.38rem;
+}
+.kp h1 {
+  font-size: 3.052em;
+}
+.kp h2 {
+  font-size: 2.441em;
+}
+.kp h3 {
+  font-size: 1.953em;
+}
+.kp h4 {
+  font-size: 1.563em;
+}
+.kp h5 {
+  font-size: 1.25em;
+}
+.kp p {
+  margin-bottom: 1rem;
+}
+.kp b, .kp strong {
+  font-weight: bolder;
+}
+.kp small {
+  font-size: 80%;
+}
+
+header {
+  padding: 8px 0px;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  transition: all ease-in 0.24s;
+}
+
+header .img-responsive {
+  width: 100%;
+  transition: all ease-in 0.24s;
+}
+
+header .logo-block figure {
+  margin-bottom: 0;
+  width: 180px;
+}
+
+.btn-primary {
+  background-color: #ee194f;
+  border-color: #ee194f;
+}
+
+.btn-primary:hover {
+  background-color: #d41645;
+  border-color: #d41645;
+}
+
+.btn-primary:target,
+.btn-primary:active:hover,
+.btn-primary:active:focus,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #d41645;
+  border-color: #d41645;
+  box-shadow: 0 0 0 0.25rem rgba(212, 22, 69, 0.5);
+}
+
+.btn-outline-primary {
+  color: #ee194f;
+  border-color: #ee194f;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ee194f;
+  border-color: #ee194f;
+}
+
+.btn-outline-primary:target,
+.btn-outline-primary:active:hover,
+.btn-outline-primary:active:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+  color: #ee194f;
+  border-color: #ee194f;
+  box-shadow: 0 0 0 0.25rem rgba(212, 22, 69, 0.5);
+}
+
+.table td {
+  font-weight: 400;
+}
+
+/*======================= # Choose plan page ==================*/
+.text-center figure {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header.logo-only-header {
+  -webkit-box-shadow: 0 0 9px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0 0 9px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.18);
+  z-index: 123;
+}
+
+.choose-plan-block {
+  background: #f9f9f9;
+  padding: 16px 0;
+  margin-top: 10px;
+}
+
+.choose-plan-block h5 {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+ul.steps li {
+  display: inline-block;
+  padding: 0 4.7%;
+  width: 23%;
+  margin-bottom: 0;
+  transition: all ease-in 0.24s;
+}
+
+ul.steps li a {
+  color: #cecece;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all ease-in 0.24s;
+}
+
+ul.steps li.step1 {
+  width: 23.8%;
+}
+
+ul.steps li.step2 {
+  width: 28.5%;
+}
+
+ul.steps li a span {
+  width: 37px;
+  height: 37px;
+  border-radius: 37px;
+  border: 2px solid #cecece;
+  text-align: center;
+  display: inline-block;
+  line-height: 34px;
+  margin-right: 18%;
+  transition: all ease-in 0.24s;
+}
+
+ul.steps li.current a span, ul.steps li:hover a span {
+  border: 2px solid #ee194f;
+  color: #ee194f;
+}
+
+ul.steps li.completed a span {
+  border: 2px solid #ee194f;
+  color: #fff;
+  background: #ee194f;
+}
+
+ul.steps li.current a, ul.steps li.completed a, ul.steps li:hover a {
+  color: #ee194f;
+}
+
+.steps-wrapper {
+  background: #fdfdfd;
+}
+
+.steps-wrapper a {
+  white-space: nowrap;
+}
+
+/*======================= ## Choose plan select program page ==================*/
+.choose-plan-page main {
+  margin-bottom: 0;
+}
+
+.step-content {
+  float: left;
+  width: 100%;
+}
+
+.choose-plan-page .pricing-block {
+  padding: 50px 0 85px;
+}
+
+.step-content .step2 {
+  padding-top: 80px;
+}
+
+.step-content .title {
+  letter-spacing: 0.1em;
+}
+
+.step2 h3 {
+  margin-bottom: 35px;
+}
+
+/*====================== # Carnet styles ============================*/
+.carnet {
+  position: relative;
+}
+
+.carnet .holder {
+  position: absolute;
+  top: 140px;
+  left: 95px;
+  z-index: 11;
+  font-size: 12px;
+}
+
+.carnet .holder > div {
+  line-height: 1.1;
+}
+
+.carnet .represented {
+  position: absolute;
+  top: 235px;
+  left: 95px;
+  z-index: 11;
+  font-size: 12px;
+}
+
+.carnet .represented > div {
+  line-height: 1.1;
+}
+
+/*====================== # Responsive styles ============================*/
+header.scrolled {
+  background: #fafafa;
+  width: 100%;
+  padding: 3px 0;
+  box-shadow: 1px 1px 10px 1px #ddd;
+}
+
+header.scrolled img {
+  transform: scale(0.84);
+}
+
+header.green {
+  background: #ee194f;
+}
+
+footer.limited-footer {
+  text-align: center;
+  color: #6c757d;
+}
+
+@media (max-width: 1200px) {
+  .logo-block figure, .top-description {
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .logo-block figure {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 768px) {
+  .menu-block .container-fluid, .navbar-collapse {
+    padding-right: 15px;
+  }
+
+  .download-popup .download-app-text, .big-image figure img, .banner-text .popular-tags, .carousel-container, .top-description > p, .food-image, .pricing-banner .banner-text, .comment-form p.comment-form-author, .comment-form p.comment-form-email, .artilce-info > span, .article-info .article-tags, .social-share > span, .social-share ul, .comment-body figure img, .top.admin figure img, .blog-left-content-full .comment-form p.comment-form-author, .blog-left-content-full .comment-form p.comment-form-email, .blog-left-content-full blockquote, .right-form-block, select.select-program, .download-app-block .left-mobile, .download-app-block .download-app-text, .download-from a img, .testimonials-block .testimonials, .blog-admin, .select-payment-btns .select-payment-btn, .payment-form form fieldset:last-of-type input[type=submit], .img-text-center p, .testimonial-box-wrap, .blog-single-wrap figure img {
+    width: 100%;
+  }
+}

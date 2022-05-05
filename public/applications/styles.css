@@ -1,0 +1,52 @@
+#contents {
+  margin-top: 82px;
+}
+
+footer {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.po {
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .toast {
+    width: auto;
+  }
+}
+/* product list */
+.table-p-list thead tr th:nth-child(1) {
+  width: 44px;
+}
+
+.table-p-list .search-cont {
+  display: none;
+}
+
+.table-p-list .bi-search {
+  cursor: pointer;
+}
+
+.table-p-list {
+  overflow-y: visible !important;
+}
+
+.timgc {
+  max-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timgc img {
+  position: relative;
+  min-height: 28px;
+}
+
+.modal-body-cont {
+  max-width: 800px;
+  margin: auto;
+}

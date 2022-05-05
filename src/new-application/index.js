@@ -641,6 +641,9 @@ const _this = {
             _this.state.application = { GeneralList: [] };
         }
 
+        if(!_this.state.application) _this.state.application = { GeneralList: [] };
+        if(!_this.state.applicationGeneralList) _this.state.applicationGeneralList = [];
+
         for(let f in _this.state.application){
 
             if(f) if(document.querySelector('#'+f)) document.querySelector('#'+f).value = _this.state.application[f];

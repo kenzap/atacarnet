@@ -436,6 +436,9 @@ const _this = {
 
                 _this.state.application['status'] = 'New';
 
+                // block confirm button place loading placeholder
+                modal.querySelector(".btn-primary").innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + __('Loading..');
+
                 // submit application
                 fetch('https://api-v1.kenzap.cloud/', {
                     method: 'post',
@@ -464,8 +467,8 @@ const _this = {
 
                         modalCont.hide();
 
-                        // block confirm button place loading placeholder
-                        modal.querySelector(".btn-primary").innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + __('Loading..');
+                        _this.getSession();
+
 
                         setCookie('navigate', 'verification', 7);
 
@@ -709,7 +712,7 @@ const _this = {
                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"></path>
                     <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"></path>
                 </svg>
-                <a href="https://api-v1.kenzap.cloud/atacarnet/?sid=${ spaceID }&id=${ el._id }" data-index="0" class="print-carnet text-dark ${ el.status == 'New' ? 'd-none':'' }" data-id="${ el._id }">${ __('ATA Carnet') }</a>
+                <a target="_blank" href="https://api-v1.kenzap.cloud/atacarnet/?sid=${ spaceID }&id=${ el._id }" data-index="0" class="print-carnet text-dark ${ el.status == 'New' ? 'd-none':'' }" data-id="${ el._id }">${ __('ATA Carnet') }</a>
                 <span class=" ${ el.status == 'New' ? '' : 'd-none' }" >${ __('n/a') }</span>
             </td>
             <td></td>

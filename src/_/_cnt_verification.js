@@ -15,34 +15,6 @@ export const verificationContent = (__) => {
               <div class="row g-2 applications">
 
               </div>
-              <div class="row g-2 carnet">
-                <div class="page1 m-0 p-0">
-                    <div class="holder">
-                        <div>Pavels Lukasenko</div>
-                        <div>Skarda Nams SIA</div>
-                        <div>122234321423</div>
-                        <div>Melluzu iela 12/6</div>
-                        <div>LV</div>
-                    </div>
-                    <div class="represented">
-                        <div>Pavels Lukasenko</div>
-                    </div>
-                    <img alt="image" style="max-width:100%;margin:auto;display:block;" src="/assets/images/carnet1.jpg">
-                </div>
-                <div class="page m-0 p-0">
-                    <div class="holder">
-                        <div>Pavels Lukasenko</div>
-                        <div>Skarda Nams SIA</div>
-                        <div>122234321423</div>
-                        <div>Melluzu iela 12/6</div>
-                        <div>LV</div>
-                    </div>
-                    <div class="represented">
-                        <div>Pavels Lukasenko</div>
-                    </div>
-                    <img alt="image" style="max-width:100%;margin:auto;display:block;" src="/assets/images/carnet1.jpg">
-                </div>
-              </div>
 
               <hr class="mt-5 d-none">
 

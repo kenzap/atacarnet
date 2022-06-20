@@ -64,6 +64,10 @@ header .logo-block figure {
   width: 180px;
 }
 
+.po {
+  cursor: pointer;
+}
+
 .btn-primary {
   background-color: #ee194f;
   border-color: #ee194f;
@@ -266,6 +270,11 @@ footer.limited-footer {
   color: #6c757d;
 }
 
+/*====================== # Add goods styles ============================*/
+.goods-suggestion li:hover {
+  color: #212529 !important;
+}
+
 @media (max-width: 1200px) {
   .logo-block figure, .top-description {
     width: 100%;
@@ -280,7 +289,6 @@ footer.limited-footer {
   .menu-block .container-fluid, .navbar-collapse {
     padding-right: 15px;
   }
-
   .download-popup .download-app-text, .big-image figure img, .banner-text .popular-tags, .carousel-container, .top-description > p, .food-image, .pricing-banner .banner-text, .comment-form p.comment-form-author, .comment-form p.comment-form-email, .artilce-info > span, .article-info .article-tags, .social-share > span, .social-share ul, .comment-body figure img, .top.admin figure img, .blog-left-content-full .comment-form p.comment-form-author, .blog-left-content-full .comment-form p.comment-form-email, .blog-left-content-full blockquote, .right-form-block, select.select-program, .download-app-block .left-mobile, .download-app-block .download-app-text, .download-from a img, .testimonials-block .testimonials, .blog-admin, .select-payment-btns .select-payment-btn, .payment-form form fieldset:last-of-type input[type=submit], .img-text-center p, .testimonial-box-wrap, .blog-single-wrap figure img {
     width: 100%;
   }

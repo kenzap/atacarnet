@@ -1,4 +1,4 @@
-import { headers, showLoader, hideLoader, onClick, onKeyUp, simulateClick, parseApiError, spaceID, toast } from '@kenzap/k-cloud';
+import { headers, showLoader, hideLoader, onClick, onKeyUp, simulateClick, parseApiError, spaceID, toast, __, __attr, __html } from '@kenzap/k-cloud';
 import { priceFormat, getPageNumber, makeNumber, parseVariations, escape, unescape, printReceipt } from "../_/_helpers.js"
 
 export const preview = {
@@ -57,7 +57,7 @@ export const preview = {
         
         
         let statusSelect = `
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between my-3">
             ${ statusHTML }
             <a href="#" data-index="0" class="print-order text-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
@@ -71,14 +71,14 @@ export const preview = {
         // structure modal
         modal.querySelector(".modal-dialog").classList.add('modal-fullscreen');
         modal.querySelector(".modal-header .modal-title").innerHTML = '<b>SG</b>'+_this.state.applicationSingle._id.substr(0,8).toUpperCase();
-        modal.querySelector(".modal-footer .btn-confirm").innerHTML = _this.state.applicationSingle._id == "new" ? __('Create') : __('Update');
+        modal.querySelector(".modal-footer .btn-confirm").innerHTML = _this.state.applicationSingle._id == "new" ? __html('Create') : __html('Update');
         modal.querySelector(".btn-confirm").dataset.loading = false;
-        modal.querySelector(".modal-footer .btn-secondary").innerHTML = __('Close');
+        modal.querySelector(".modal-footer .btn-secondary").innerHTML = __html('Close');
 
         let html = statusSelect;
 
         // _id: {l: __("System ID")},
-        let fields = { id: {l: __("ID"), classList: "order-form"}, FirstName: {l: __("First Name"), e: "text", editable: true, classList: "order-form"}, LastName: {l: __("Last Name"), e: "text", editable: true, classList: "order-form"}, CompanyName: {l: __("Company Name"), e: "text", editable: true, classList: "order-form"}, CompanyReg: {l: __("Company Registration Nr."), e: "text", editable: true, classList: "order-form"}, GeneralList: {l: __('<hr class="text-secondary">'), e: "GeneralList", editable: false, classList: "order-form"}, Phone: {l: __("Phone"), e: "text", editable: true, classList: "order-form"}, Email: {l: __("Email"), e: "text", editable: true, classList: "order-form"}, Website: {l: __("Website"), e: "text", editable: true, classList: "order-form"}, Street1: {l: __("Street 1"), e: "text", editable: true, classList: "order-form"}, Street2: {l: __("Street 2"), e: "text", editable: true, classList: "order-form"}, Country: {l: __("Country"), e: "text", editable: true, classList: "order-form"}, City: {l: __("City"), e: "text", editable: true, classList: "order-form"}, ZIP: {l: __("ZIP"), e: "text", editable: true, classList: "order-form"}, State: {l: __("State"), e: "text", editable: true, classList: "order-form"} };
+        let fields = { id: {l: __html("ID"), classList: "order-form"}, FirstName: {l: __html("First Name"), e: "text", editable: true, classList: "order-form"}, LastName: {l: __html("Last Name"), e: "text", editable: true, classList: "order-form"}, CompanyName: {l: __html("Company Name"), e: "text", editable: true, classList: "order-form"}, CompanyReg: {l: __html("Company Registration Nr."), e: "text", editable: true, classList: "order-form"}, GeneralList: {l: '<hr class="text-secondary">', e: "GeneralList", editable: false, classList: "order-form"}, Phone: {l: __html("Phone"), e: "text", editable: true, classList: "order-form"}, Email: {l: __html("Email"), e: "text", editable: true, classList: "order-form"}, Website: {l: __html("Website"), e: "text", editable: true, classList: "order-form"}, Street1: {l: __html("Street 1"), e: "text", editable: true, classList: "order-form"}, Street2: {l: __html("Street 2"), e: "text", editable: true, classList: "order-form"}, Country: {l: __html("Country"), e: "text", editable: true, classList: "order-form"}, City: {l: __html("City"), e: "text", editable: true, classList: "order-form"}, ZIP: {l: __html("ZIP"), e: "text", editable: true, classList: "order-form"}, State: {l: __html("State"), e: "text", editable: true, classList: "order-form"} };
 
         // console.log(_this.state.applicationSingle);
 
@@ -103,12 +103,6 @@ export const preview = {
         // table order item listners (remove, add note, adjust variations, etc)
         preview.tableApplicationItemListeners();
 
-        // order item product edit listener
-        preview.suggestApplicationItem(_this);
-
-        // hide suggestion list if still present
-        // modal.querySelector(".edit-item").addEventListener('blur', (e) => { setTimeout(()=>{ document.querySelector('.s-list').dataset.toggle = false; }, 500); });
-            
         // add product item to order table
         preview.addApplicationItem(_this);
 
@@ -167,7 +161,6 @@ export const preview = {
     renderField: (_this, a, item, x) => {
 
         // console.log(a.e);
-
         let html = '';
         switch(a.e){
             
@@ -178,23 +171,20 @@ export const preview = {
                 return html;
             case 'text': 
 
-                html = `<div data-id="${x}" data-type="text" class="${ a.classList ? a.classList : "" } ms-2 d-inline-block" ${ a.editable ? 'contenteditable="true"':'' } data-id="${x}">${ item }</div>`;
+                html = `<div data-id="${x}" data-type="text" class="${ a.classList ? a.classList : "" } ms-2 d-inline-block form-control border-0" ${ a.editable ? 'contenteditable="true"':'' } data-id="${x}">${ item }</div>`;
                 return html;
             case 'textarea': return '<textarea type="text" rows="4" class="form-control order-form pv " data-type="textarea" id="'+x+'" value="'+item+'">'+item+'</textarea>';
             case 'GeneralList': 
 
                 // parse product items
-                html = `<table class="items order-form mb-5" data-type="items"><tr><th><div class="me-1 me-sm-3">${ __('Nr.') }</div></th><th><div class="me-1 me-sm-3">${ __('HS Code') }</div></th><th><div class="me-1 me-sm-3">${ __('Goods') }</div></th><th class="qty"><div class="me-1 me-sm-3">${ __('Qty') }</div></th><th class="weight"><div class="me-1 me-sm-3">${ __('Weight') }</div></th><th class="tp"><div class="me-1 me-sm-3">${ __('Value') }</div></th><th class="origin"><div class="me-1 me-sm-3">${ __('Origin') }</div></th><th></th></tr>`;
+                html = `<table class="items order-form mb-5" data-type="items"><tr><th><div class="me-1 me-sm-3">${ __html('Nr.') }</div></th><th><div class="me-1 me-sm-3">${ __html('HS Code') }</div></th><th><div class="me-1 me-sm-3">${ __html('Goods') }</div></th><th class="qty"><div class="me-1 me-sm-3">${ __html('Qty') }</div></th><th class="weight"><div class="me-1 me-sm-3">${ __html('Weight') }</div></th><th class="tp"><div class="me-1 me-sm-3">${ __html('Value') }</div></th><th class="origin"><div class="me-1 me-sm-3">${ __html('Origin') }</div></th><th></th></tr>`;
                 for(let x in item){ html += preview.structGeneralListRow(_this, x, item, false); }
 
                 // add row for manual product entry
                 html += `<tr class="new-item-row">
                             <td class="tp">
                                 <div class="me-1 me-sm-3">
-                                    <input type="text" value="" autocomplete="off" placeholder="${ __('Search..') }" class="form-control text-right edit-item" data-id="" data-index="" list="item-suggestions">
-                                    <span class="select-list-group__toggle"> </span>
-                                    <ul class="s-list my-1 shadow-sm d-none" data-toggle="false"></ul>
-                                    <datalist id="item-suggestions" class="fs-12 d-none"></datalist>
+                                    <input type="text" value="${ item.length+1 }" autocomplete="off" placeholder=" " class="form-control text-right gen-list-index-new" data-id="" data-index="" >
                                 </div>
                             </td>
                             <td class="qty">
@@ -252,10 +242,10 @@ export const preview = {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical order-item-options" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
             </a>
             <ul class="dropdown-menu" aria-labelledby="order-item-options" >
-                <li><a class="oio dropdown-item edit-item-note" data-key="edit-item-note" href="#">${ __('Add note') }</a></li>
-                <li><a class="oio dropdown-item d-none" data-key="edit-item-variation" href="#">${ __('Add variation') }</a></li>
-                <li><a class="oio dropdown-ite d-none" data-key="edit-item-price" href="#">${ __('Adjust price') }</a></li>
-                <li><a class="oio dropdown-item text-danger remove-item" data-key="remove-item" href="#">${ __('Remove') }</a></li>
+                <li><a class="oio dropdown-item edit-item-note" data-key="edit-item-note" href="#">${ __html('Add note') }</a></li>
+                <li><a class="oio dropdown-item d-none" data-key="edit-item-variation" href="#">${ __html('Add variation') }</a></li>
+                <li><a class="oio dropdown-ite d-none" data-key="edit-item-price" href="#">${ __html('Adjust price') }</a></li>
+                <li><a class="oio dropdown-item text-danger remove-item" data-key="remove-item" href="#">${ __html('Remove') }</a></li>
             </ul>
         </div>
     `;
@@ -275,7 +265,7 @@ export const preview = {
         vars += '<div><b>' + item[x].variations[v].title + "</b> <span>" + list + "</span></div> ";
 
         // meal note
-        if(item[x].variations[v].note !== undefined && item[x].variations[v].note.length > 0) vars += "<div><b>" + __('Note') + "</b> " + item[x].variations[v].note + "</div> ";
+        if(item[x].variations[v].note !== undefined && item[x].variations[v].note.length > 0) vars += "<div><b>" + __html('Note') + "</b> " + item[x].variations[v].note + "</div> ";
     }
 
     output += '<tr class="order-item-row-active" data-x="'+x+'" data-id="'+item[x].id+'" data-vars="'+escape(JSON.stringify(item[x].variations))+'">';
@@ -290,7 +280,7 @@ export const preview = {
     if(modal.querySelector(".btn-confirm").dataset.loading === 'true') return;
 
     modal.querySelector(".btn-confirm").dataset.loading = true;
-    modal.querySelector(".btn-confirm").innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + __('Loading..');
+    modal.querySelector(".btn-confirm").innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + __html('Loading..');
 
     let data = {};
 
@@ -404,7 +394,7 @@ export const preview = {
 
                         _this.state.modalCont.hide();
 
-                        toast( __('Order created') );
+                        toast( __html('Order created') );
 
                         if(_this.state.printLink) _this.state.printLink = printReceipt(_this, data);
 
@@ -465,7 +455,7 @@ export const preview = {
 
                 _this.state.modalCont.hide();
 
-                toast( __('Application updated') );
+                toast( __html('Application updated') );
       
                 _this.getData();
 
@@ -479,151 +469,7 @@ export const preview = {
         });
     }
   },
-  suggestApplicationItem: (_this) => {
-            
-    onKeyUp('.edit-item', (e) => {
-        
-      // disable some key for better UX
-      var key = e.keyCode || e.charCode;
-      if (key >= 34 && key <= 45) { return; }
-
-      let s  = e.currentTarget.value;
-
-      if(s.length == 1) document.querySelector('.modal-body').scrollTo({
-        top: (document.querySelector('.edit-item').getBoundingClientRect().top - document.querySelector('.modal-body-cont').getBoundingClientRect().top) - 20,
-        behavior: "smooth"
-      });
-
-      // empty search string
-      if(s.length==0 || e.currentTarget !==document.activeElement) { document.querySelector('.s-list').dataset.toggle = false; return; }
-
-      // do API query
-      fetch('https://api-v1.kenzap.cloud/', {
-          method: 'post',
-          headers: headers,
-          body: JSON.stringify({
-              query: {
-                  products: {
-                      type:       'find',
-                      key:        'ecommerce-product',
-                      fields:     ['_id', 'id', 'img', 'status', 'variations', 'price', 'title'],
-                      limit:      _this.state.slist,
-                      // only suggesting products with status public
-                      term:       [
-                                    {
-                                        type: "string",
-                                        field: "status",
-                                        relation: "=",
-                                        value: "1",
-                                    }
-                                  ],
-                      offset:     s.length > 0 ? 0 : getPageNumber() * _this.state.slist - _this.state.slist,    // automatically calculate the offset of table pagination
-                      search:     {                                                           // if s is empty search query is ignored
-                                      field: 'title',
-                                      s: s
-                                  },
-                      sortby:     {
-                                      field: 'title',
-                                      order: 'DESC'
-                                  },
-                  }
-              }
-          })
-      })
-      .then(response => response.json())
-      .then(response => {
-
-          // hide UI loader
-          hideLoader();
-
-          // console.log(response);
-
-          if(response.success){
-
-              _this.state.productsSuggestions = response.products;
-
-              let options = ``;
-              response.products.forEach((product, index) => {
-
-                  // options += `<option class="pso" data-id="${ product._id }" data-title="${ product.title }" data-index="${ index }" value="${ product.title }">${ product.title }</option>`; 
-                  options += `<li class="s-list-item py-1" data-id="${ product._id }" data-title="${ product.title }" data-index="${ index }"  data-display="true" data-highlight="false">${ product.title }</li>`; 
-              });
-              document.querySelector('.s-list').innerHTML = options;
-              document.querySelector('.s-list').dataset.toggle = true;
-
-              // suggestion click listener 
-              onClick('.s-list-item', (e) => {
-
-                  let index = e.currentTarget.dataset.index;
-
-                  // console.log(index);
-                  // console.log(_this.state.productsSuggestions[index]);
-                  
-                  document.querySelector('.edit-item').dataset.index = index;   
-                  document.querySelector('.edit-item').dataset.id = _this.state.productsSuggestions[index]._id;   
-                  document.querySelector('.edit-item').value = _this.state.productsSuggestions[index].title;   
-                  document.querySelector('.edit-qty').value = 1;
-                  document.querySelector('.edit-qty').dataset.price = _this.state.productsSuggestions[index].price;
-                  document.querySelector('.edit-tp').value = _this.state.productsSuggestions[index].price;
-                  document.querySelector('.edit-tp').dataset.price = _this.state.productsSuggestions[index].price;
-                  document.querySelector('.s-list').dataset.toggle = false;
-
-                  let calcItemTotal = () => {
-
-                      let total = parseFloat(document.querySelector('.edit-qty').value) * parseFloat(document.querySelector('.edit-qty').dataset.price);
-                      if(isNaN(total)) total = "";
-                      document.querySelector('.edit-tp').value = total;
-                  }
-
-                  // auto update price when quantity is changed
-                  document.querySelector('.edit-qty').addEventListener('keypress', (e)=>{
-
-                      // console.log(e.which);
-                      if(e.which != 8 && isNaN(String.fromCharCode(e.which))){
-
-                          e.preventDefault(); // stop character from entering input
-                          return false;
-                      }
-
-                  });
-
-                  document.querySelector('.edit-qty').addEventListener('keydown', (e)=>{
-
-                      // console.log('keydown');
-                      setTimeout(() => { calcItemTotal(); }, 300);
-
-                  });
-
-                  // price can be float number only
-                  document.querySelector('.edit-tp').addEventListener('keypress', (e)=>{
-
-                      // console.log(e.which);
-                      if(e.which != 8 && e.which != 46 && isNaN(String.fromCharCode(e.which))){
-
-                          e.preventDefault(); // stop character from entering input
-                          return false;
-                      }
-                  });
-
-                  // focus on quantity field
-                  document.querySelector('.edit-qty').focus();
-                  document.querySelector('.edit-qty').select();   
-                  
-                  // parse selected product variations
-                  // console.log('parseVariations');
-                  document.querySelector('.item-vars-input').innerHTML = parseVariations(_this, _this.state.productsSuggestions[index]);
-
-              });
-
-          }else{
-
-              parseApiError(response);
-          }
-      })
-      .catch(error => { console.log(error); parseApiError(error); });
-
-    });
-  },
+  
   tableApplicationItemListeners: (e) => {
 
     // make note field visible below the order item
@@ -656,7 +502,7 @@ export const preview = {
     if(document.querySelector('.keyx-total_tax')) document.querySelector('.keyx-total_tax').remove();
     if(document.querySelector('.keyx-total_with_tax')) document.querySelector('.keyx-total_with_tax').remove();
 
-    let html = "", totals = { total: { title: __('Total'), amount: 0 }, total_with_tax: { title: __('Paid'), amount: 0 } };
+    let html = "", totals = { total: { title: __html('Total'), amount: 0 }, total_with_tax: { title: __html('Paid'), amount: 0 } };
     for(let price of document.querySelectorAll('.item-total')){
 
         let tax = makeNumber(price.dataset.value) * 0.09;
@@ -684,20 +530,46 @@ export const preview = {
   },
   structGeneralListRow: (_this, index, items, tf) => {
 
+    let el = items[index];
+
+    // <input type="text" value="" autocomplete="off" class="form-control text-right edit-qty">
+
     console.log(el);
 
-    let el = items[index];
+    // Group
 
     return `
     <tr>
-        <td>${ parseInt(index) + 1 }</td>
-        <td>CHVD20201234</td>
-        <td>${ el.Name }</td>
-        <td>${ el.Quantity }</td>
-        <td>${ el.Weight + '' + el.WeightUnit }</td>
-        <td>${ el.Value }</td>
-        <td>${ el.Origin }</td>
-        <td></td>
+        <td class="gen-list-index pe-3 pb-3"><input type="text" value="${ parseInt(index) + 1 }" autocomplete="off" data-name="index" class="form-control"></td>
+        <td class="gen-list-group pe-3 pb-3"><input type="text" value="${ el.Group }" autocomplete="off" data-name="Group" class="form-control"></td>
+        <td class="gen-list-name pe-3 pb-3"><textarea type="text" value="" autocomplete="off" data-name="Name" rows="1" class="form-control">${ el.Name }</textarea></td>
+        <td class="gen-list-qty pe-3 pb-3"><input type="text" value="${ el.Quantity }" autocomplete="off" data-name="Quantity" class="form-control text-end"></td>
+        <td class="gen-list-weight pe-3 pb-3">
+            <input type="text" value="${ el.Weight }" autocomplete="off" data-name="Weight" class="form-control d-inline-block" placeholder="" >
+            <select class="form-select text-start d-inline-block" name="WeightUnit" data-value="${ el.WeightUnit }" data-type="select">
+                <option value="g" ${ el.WeightUnit == 'g' ? 'selected' : '' }>${ __html('g') }</option>
+                <option value="gr" ${ el.WeightUnit == 'gr' ? 'selected' : '' }>${ __html('gr') }</option>
+                <option value="kg" ${ el.WeightUnit == 'kg' ? 'selected' : '' }>${ __html('kg') }</option>
+                <option value="t" ${ el.WeightUnit == 't' ? 'selected' : '' }>${ __html('t') }</option>
+                <option value="l" ${ el.WeightUnit == 'l' ? 'selected' : '' }>${ __html('l') }</option>
+                <option value="lt" ${ el.WeightUnit == 'lt' ? 'selected' : '' }>${ __html('lt') }</option>
+            </select>
+        </td>
+        <td class="gen-list-value pe-3 pb-3"><input type="text" value="${ el.Value }" autocomplete="off" data-name="Value" class="form-control"></td>
+        <td class="gen-list-origin pe-3 pb-3"><input type="text" value="${ el.Origin }" autocomplete="off" data-name="Origin" class="form-control"></td>
+        <td class="pb-3">
+            <div class="dropdown text-center">
+                <a href="#" role="button" id="order-item-options" data-id="status" data-value="" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical order-item-options" viewBox="0 0 16 16"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path></svg>
+                <a>
+                <ul class="dropdown-menu" aria-labelledby="order-item-options">
+                    <li><a class="oio dropdown-item edit-item-note" data-key="edit-item-note" href="#">Add note</a></li>
+                    <li><a class="oio dropdown-item d-none" data-key="edit-item-variation" href="#">Add variation</a></li>
+                    <li><a class="oio dropdown-ite d-none" data-key="edit-item-price" href="#">Adjust price</a></li>
+                    <li><a class="oio dropdown-item text-danger remove-item" data-key="remove-item" href="#">Remove</a></li>
+                </ul>
+            </div>
+        </td>
     </tr>`;
   },
   addApplicationItem: (_this) => {
@@ -766,7 +638,7 @@ export const preview = {
     //   }
 
 
-      if(item.title.length<2){ alert(__('Incorrect product data')); return; }
+      if(item.title.length<2){ alert( __html('Incorrect product data') ); return; }
 
       itemArr.push(item);
 

@@ -10,13 +10,14 @@ body{margin: 0; line-height: 1.75; font-weight: 400; color: var(--txtColorA); }
 	p{margin-bottom: 1rem;}
 	b,strong{font-weight: bolder;}
 	small{font-size: 80%;}
-
 	margin: -16px auto 0 auto;
 }
 
 header {padding: 8px 0px;z-index: 1;position: fixed;width: 100%;background: #fff;top: 0; transition: all ease-in 0.24s}
 header .img-responsive{ width:100%; transition: all ease-in 0.24s;}
 header .logo-block figure {margin-bottom: 0;width: 180px;}
+
+.po{cursor:pointer;}
 
 .btn-primary{ background-color:#ee194f; border-color: #ee194f; }
 .btn-primary:hover{ background-color:#d41645; border-color: #d41645; }
@@ -63,7 +64,6 @@ ul.steps li.current a, ul.steps li.completed a, ul.steps li:hover a {color:#ee19
 .step2 h3 {margin-bottom: 35px;}
 
 /*====================== # Carnet styles ============================*/
-
 .carnet{position: relative;}
 .carnet .holder{position:absolute;top:140px;left:95px;z-index:11;font-size:12px}
 .carnet .holder > div {line-height: 1.1;}
@@ -76,6 +76,8 @@ header.scrolled img{transform: scale(.84); }
 header.green {background: #ee194f;}
 footer.limited-footer{text-align:center;color: #6c757d;}
 
+/*====================== # Add goods styles ============================*/
+.goods-suggestion li:hover{ color: #212529!important; }
 
 @media (max-width: 1200px){
 	.logo-block figure, .top-description {width: 100%;}

@@ -10,5 +10,10 @@
 .timgc{max-width:50px;overflow:hidden; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .timgc img{position:relative;min-height:28px;}
 
-.modal-body-cont{max-width: 800px;margin: auto;}
-
+.modal-body-cont{max-width: 1200px;margin:auto;}
+.modal-body-cont .order-row > .form-control{width:auto;min-width:100px;}
+.modal-body-cont .gen-list-group{ min-width: 100px; }
+.modal-body-cont .gen-list-name{ min-width: 300px; }
+.modal-body-cont .gen-list-weight{ min-width: 160px; }
+.modal-body-cont .gen-list-weight > select,
+.modal-body-cont .gen-list-weight > input{ width: auto; max-width: 90px; }

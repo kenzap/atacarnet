@@ -1,8 +1,8 @@
 // js dependencies
-import { headers, showLoader, hideLoader, initHeader, initFooter, initBreadcrumbs, parseApiError } from '@kenzap/k-cloud';
+import { headers, showLoader, hideLoader, initHeader, initFooter, initBreadcrumbs, parseApiError, __attr, __html } from '@kenzap/k-cloud';
 import { getCookie, setCookie, priceFormat, formatStatus, formatTime, randomString, makeNumber, API_KEY, CDN, spaceID, appID, toast, onClick, onKeyUp, onChange, getCountries, mt, __ } from "../_/_helpers.js"
-import { applicationContent } from "../_/_cnt_new_application.js"
 import { welcomeContent } from "../_/_cnt_welcome.js"
+import { applicationContent } from "../_/_cnt_new_application.js"
 import { verificationContent } from "../_/_cnt_verification.js"
 import { paymentContent } from "../_/_cnt_payment.js"
 import { carnetContent } from "../_/_cnt_carnet.js"
@@ -34,6 +34,9 @@ const _this = {
                 // init application form content
                 document.querySelector("main").innerHTML = applicationContent(__);
 
+                // render all applications table
+                // _this.applicationsTable();
+                
                 // restore applicate state
                 _this.restoreApplication();
 
@@ -55,7 +58,7 @@ const _this = {
                 // init application form content
                 document.querySelector("main").innerHTML = verificationContent(__);
 
-                // render application table
+                // render all applications table
                 _this.applicationsTable();
 
                 // scrollEvents
@@ -85,9 +88,6 @@ const _this = {
                 _this.setStep(2);
 
                 // addScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
-
-
-
                 break;
             case 'carnet':
 
@@ -251,6 +251,45 @@ const _this = {
                 <div class="form-group mb-3">
                     <label for="Name" class="form-label">${ __('Goods') }</label>
                     <textarea id="Name" maxlength="1000" class="form-control" name="note" ></textarea>
+                    <ul class="list-group list-group-flush goods-suggestion mt-2" style="font-size: 14px;max-height:120px;overflow:scroll;">
+                        <li class="list-group-item d-flex justify-content-between text-muted po " style="cursor: pointer;" data-i="0">
+                            Watch with serial #1234
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files text-end po" viewBox="0 0 16 16">
+                                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between text-muted po" data-i="1">
+                        
+                            BMW 535 WIN 15445432458 
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files text-end po" viewBox="0 0 16 16">
+                                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                                </svg>
+                            </div>
+                            
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between text-muted po" data-i="2">
+
+                            Flash memory 8GB
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files text-end po" viewBox="0 0 16 16">
+                                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                                </svg>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between text-muted po" data-i="3">
+                        
+                            Golden ring 88888975
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files text-end po" viewBox="0 0 16 16">
+                                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                                </svg>
+                            </div>
+                        </li>
+                    </ul>
                     <p class="form-text">${ __('Trade description of goods and marks and numbers, if any. Ex.: watch with serial #1234.') }</p>
                 </div>
                 <div class="form-group mb-3">
@@ -319,6 +358,54 @@ const _this = {
 
                 let key = e.keyCode || e.charCode;  console.log(key);
                 if (key != 46 && key > 31 && (key < 43 || key > 57)){ e.preventDefault(); return false; }else{ return true; } // && key != 190       
+            });
+
+            // suggestion list populate listener
+            onClick(".goods-suggestion li", e => {
+
+                let goods = [
+                    {
+                        Name: "Watch with serial #1234",
+                        Quantity: 1,
+                        Group: "852351",
+                        Weight: 500,
+                        WeightUnit: "g",
+                        Value: 12000
+                    },
+                    {
+                        Name: "BMW 535 WIN 15445432458",
+                        Quantity: 1,
+                        Group: "752351",
+                        Weight: 2.5,
+                        WeightUnit: "kg",
+                        Value: 25000
+                    },
+                    {
+                        Name: "Flash memory 8GB",
+                        Quantity: 1,
+                        Group: "952351",
+                        Weight: 120,
+                        WeightUnit: "g",
+                        Value: 54
+                    },
+                    {
+                        Name: "Golden ring 88888975",
+                        Quantity: 1,
+                        Group: "900351",
+                        Weight: 100,
+                        WeightUnit: "g",
+                        Value: 5400
+                    },
+                ];
+                let i = e.currentTarget.dataset.i;
+
+                document.querySelector("#Name").value = goods[i].Name;
+                document.querySelector("#Quantity").value = goods[i].Quantity;
+                document.querySelector("#Group").value = goods[i].Group;
+                document.querySelector("#Weight").value = goods[i].Weight;
+                document.querySelector("#WeightUnit").value = goods[i].WeightUnit;
+                document.querySelector("#Value").value = goods[i].Value;
+
             });
 
             // add records to the table
@@ -662,15 +749,15 @@ const _this = {
     applicationsTable: () => {
 
         let GeneralListHtml = `
-        <h4 class="my-4">${ __('All Applications') }</h4>
+        <h4 class="my-4">${ __('Last Applications') }</h4>
         <table class="table table-hover table-borderless align-middle table-striped table-general-list mb-5" style="min-width: 700px;">
             <thead>
                 <tr>
                     <th><span>${ __('ID') }</span></th>
                     <th><span>${ __('Contacts') }</span></th>
                     <th><span>${ __('Status') }</span></th>
-                    <th><span>${ __('Last update') }</span></th>
-                    <th><span>${ __('Print') }</span></th>
+                    <th><span>${ __('Date') }</span></th>
+                    <th><span> </span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -678,7 +765,25 @@ const _this = {
             
             _this.state.response.applications.forEach((el, index) => {
 
-                GeneralListHtml += _this.structApplicationRow(el, index);
+                let appID = '<b>SG</b>' + el._id.substr(0,8).toUpperCase();
+
+                if(document.querySelector('#app-id') && el.status != 'New') if(document.querySelector('#app-id').innerHTML == ''){ document.querySelector('#app-id').innerHTML = appID; if(document.querySelector('.print-carnet-btn')) document.querySelector('.print-carnet-btn').setAttribute('href', `https://api-v1.kenzap.cloud/atacarnet/?sid=${ spaceID }&id=${ el._id }`); }
+                
+                GeneralListHtml += `
+                <tr>
+                    <td><span>${ appID }</span></td>
+                    <td><span>${ el.FirstName } ${ el.LastName }</span></td>
+                    <td><span>${ formatStatus(__, el.status) }</span></td>
+                    <td><span>${ formatTime(__, el.updated) }</span></td>
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files po" viewBox="0 0 16 16">
+                            <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                        </svg>
+                    </td>
+                    <td></td>
+                </tr>`;
+
+                // GeneralListHtml += _this.structApplicationRow(el, index);
             });
 
             GeneralListHtml += `

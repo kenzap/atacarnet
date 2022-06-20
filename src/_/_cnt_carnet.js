@@ -16,7 +16,7 @@ export const carnetContent = (__) => {
 
                     <p>${__('For previous ATA Carnet applications please refer to the table below. ATA Carnets are only issued after %1$payment%2$ is received in full amount.', '<b>', '</b>')}</p> 
               </div>
-              <div class="row g-2 applications">
+              <div class="row g-2 applications table-responsive">
 
               </div>
               <hr class="mt-5 d-none">

@@ -12,7 +12,7 @@ export const verificationContent = (__) => {
                   <div class="mb-3"> <img alt="welcome image" style="max-width:350px;margin:auto;display:block;" src="/assets/images/verification.svg"> </div>
                   <p>${ __('Thank you for your application. It is currently being processed by SICC agents. Please check this page within next 24 hours or wait for a confirmation email.') }</p>
               </div>
-              <div class="row g-2 applications">
+              <div class="row g-2 applications table-responsive">
 
               </div>
 
